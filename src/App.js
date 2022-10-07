@@ -3,8 +3,11 @@ import FuzzySearch from "fuzzy-search";
 
 import "./App.css";
 
+import ShoppingList from "./pages/ShoppingList";
+import SuggestionList from "./pages/SuggestionList";
 import SuggestedItem from "./components/SuggestedItem";
 import ShoppingItem from "./components/ShoppingItem";
+import Input from "./components/Input";
 
 function App() {
   const [items, setItems] = useState([]);
@@ -34,7 +37,7 @@ function App() {
 
   return (
     <div className="App">
-      <ul className="shopping-list">
+      <ShoppingList>
         {shoppingList.map((item) => (
           <ShoppingItem
             key={item._id}
@@ -43,14 +46,11 @@ function App() {
             setShoppingList={setShoppingList}
           />
         ))}
-      </ul>
-      <input
-        id="input"
-        type="text"
-        onChange={showItemSuggestions}
-        placeholder="Search Item"
-      />
-      <ul className="suggestions-list">
+      </ShoppingList>
+
+      <Input showItemSuggestions={showItemSuggestions} />
+
+      <SuggestionList>
         {searchItem &&
           suggestions.map((suggestion) => (
             <SuggestedItem
@@ -61,7 +61,7 @@ function App() {
               setSearchItem={setSearchItem}
             />
           ))}
-      </ul>
+      </SuggestionList>
     </div>
   );
 }
