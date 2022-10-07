@@ -1,9 +1,10 @@
-export default function SuggestedItem({
-  item,
-  shoppingList,
-  setShoppingList,
-  setSearchItem,
-}) {
+import { useContext } from "react";
+import { ShoppingContext } from "../context/ShoppingContext";
+
+export default function SuggestedItem({ item }) {
+  const { shoppingList, setShoppingList, setSearchItem } =
+    useContext(ShoppingContext);
+
   function addToList() {
     setShoppingList([...shoppingList, item]);
     setSearchItem("");

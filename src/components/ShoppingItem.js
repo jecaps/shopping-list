@@ -1,4 +1,9 @@
-export default function ShoppingItem({ item, shoppingList, setShoppingList }) {
+import { useContext } from "react";
+import { ShoppingContext } from "../context/ShoppingContext";
+
+export default function ShoppingItem({ item }) {
+  const { shoppingList, setShoppingList } = useContext(ShoppingContext);
+
   function removeFromList() {
     setShoppingList(
       shoppingList.filter(
