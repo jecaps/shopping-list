@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ShoppingContext } from "./context/ShoppingContext";
+import { saveToLocal, loadFromLocal } from "./lib/localStorage";
 import "./App.css";
 
 import ShoppingList from "./pages/ShoppingList";
@@ -8,9 +9,15 @@ import Input from "./components/Input";
 
 function App() {
   const [items, setItems] = useState([]);
-  const [shoppingList, setShoppingList] = useState([]);
+  const [shoppingList, setShoppingList] = useState(
+    loadFromLocal("saved shopping list") ?? []
+  );
   const [searchItem, setSearchItem] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+
+  useEffect(() => {
+    saveToLocal("saved shopping list", shoppingList);
+  }, [shoppingList]);
 
   return (
     <div className="App">
