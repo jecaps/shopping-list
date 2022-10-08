@@ -2,7 +2,9 @@ import { useEffect, useContext } from "react";
 import { ShoppingContext } from "../context/ShoppingContext";
 import FuzzySearch from "fuzzy-search";
 
-export default function Form() {
+import styled from "styled-components";
+
+export default function Input() {
   const { items, setItems, searchItem, setSearchItem, setSuggestions } =
     useContext(ShoppingContext);
 
@@ -26,11 +28,25 @@ export default function Form() {
   });
 
   return (
-    <input
-      id="input"
-      type="text"
-      onChange={showItemSuggestions}
-      placeholder="Search Item"
-    />
+    <Form>
+      <label htmlFor="input">What do you wanna buy?</label>
+      <input
+        id="input"
+        type="text"
+        onChange={showItemSuggestions}
+        placeholder="Search Item"
+      />
+    </Form>
   );
 }
+
+const Form = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  input {
+    width: 30%;
+  }
+`;
