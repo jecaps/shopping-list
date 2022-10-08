@@ -2,15 +2,26 @@ import { useContext } from "react";
 import { ShoppingContext } from "../context/ShoppingContext";
 import SuggestedItem from "../components/SuggestedItem";
 
+import styled from "styled-components";
+
 export default function SuggestionList() {
   const { searchItem, suggestions } = useContext(ShoppingContext);
 
   return (
-    <ul className="suggestions-list">
+    <List className="suggestions-list">
       {searchItem &&
         suggestions.map((suggestion) => (
           <SuggestedItem key={suggestion._id} item={suggestion} />
         ))}
-    </ul>
+    </List>
   );
 }
+
+const List = styled.ul`
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 5px;
+  list-style: none;
+  padding: 0;
+`;

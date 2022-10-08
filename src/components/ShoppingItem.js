@@ -1,6 +1,8 @@
 import { useContext } from "react";
 import { ShoppingContext } from "../context/ShoppingContext";
 
+import styled from "styled-components";
+
 export default function ShoppingItem({ item }) {
   const { shoppingList, setShoppingList } = useContext(ShoppingContext);
 
@@ -13,8 +15,14 @@ export default function ShoppingItem({ item }) {
   }
 
   return (
-    <li className="shopping-item" onClick={removeFromList}>
+    <ListItem className="shopping-item" onClick={removeFromList}>
       {item.name.en}
-    </li>
+    </ListItem>
   );
 }
+
+const ListItem = styled.li`
+  border: 1px solid black;
+  border-radius: 4px;
+  width: 100px;
+`;
