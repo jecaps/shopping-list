@@ -3,7 +3,7 @@ import { ShoppingContext } from "../context/ShoppingContext";
 
 import styled from "styled-components";
 
-export default function SuggestedItem({ item }) {
+export default function SuggestedItem({ item, id }) {
   const { shoppingList, setShoppingList, setSearchItem } =
     useContext(ShoppingContext);
 
@@ -14,14 +14,18 @@ export default function SuggestedItem({ item }) {
   }
 
   return (
-    <ListItem className="suggestion" onClick={addToList}>
-      {item.name.en}
-    </ListItem>
+    <>
+      {!shoppingList.some((shoppingItem) => shoppingItem._id === id) && (
+        <ListItem className="suggestion" onClick={addToList}>
+          {item.name.en}
+        </ListItem>
+      )}
+    </>
   );
 }
 
 const ListItem = styled.li`
   border: 1px solid black;
   border-radius: 4px;
-  width: 100px;
+  padding: 2px 10px;
 `;

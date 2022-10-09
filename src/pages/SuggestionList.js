@@ -14,7 +14,11 @@ export default function SuggestionList() {
           <p>Item "{searchItem}" Not Found</p>
         ) : (
           suggestions.map((suggestion) => (
-            <SuggestedItem key={suggestion._id} item={suggestion} />
+            <SuggestedItem
+              key={suggestion._id}
+              item={suggestion}
+              id={suggestion._id}
+            />
           ))
         )
       ) : (

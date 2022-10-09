@@ -1,11 +1,11 @@
-import { useEffect, useContext } from "react";
+import { useContext } from "react";
 import { ShoppingContext } from "../context/ShoppingContext";
 import FuzzySearch from "fuzzy-search";
 
 import styled from "styled-components";
 
 export default function Input() {
-  const { items, setItems, searchItem, setSearchItem, setSuggestions } =
+  const { items, searchItem, setSearchItem, setSuggestions } =
     useContext(ShoppingContext);
 
   const showItemSuggestions = (e) => {
@@ -20,17 +20,6 @@ export default function Input() {
         .slice(0, 10)
     );
   };
-
-  useEffect(() => {
-    async function getData() {
-      const response = await fetch(
-        "https://fetch-me.vercel.app/api/shopping/items"
-      );
-      const data = await response.json();
-      setItems(data.data);
-    }
-    getData();
-  }, []);
 
   return (
     <Form>
