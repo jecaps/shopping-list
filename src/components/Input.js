@@ -30,7 +30,7 @@ export default function Input() {
       setItems(data.data);
     }
     getData();
-  });
+  }, []);
 
   return (
     <Form>
