@@ -5,13 +5,17 @@ import SuggestedItem from "../components/SuggestedItem";
 import styled from "styled-components";
 
 export default function SuggestionList() {
-  const { searchItem, suggestions } = useContext(ShoppingContext);
+  const { searchItem, suggestions, language } = useContext(ShoppingContext);
 
   return (
     <List className="suggestions-list">
       {searchItem ? (
         suggestions.length === 0 ? (
-          <p>Item "{searchItem}" Not Found</p>
+          <p>
+            {language === "en"
+              ? `"${searchItem}" Not Found`
+              : `"${searchItem}" nicht gefunden`}
+          </p>
         ) : (
           suggestions.map((suggestion) => (
             <SuggestedItem
