@@ -1,25 +1,37 @@
-import { useContext } from "react";
-import { ShoppingContext } from "../context/ShoppingContext";
-import ShoppingItem from "../components/ShoppingItem";
+import { useEffect, useState } from "react";
+import CategoryItem from "../components/CategoryItem";
 
 import styled from "styled-components";
 
 export default function ShoppingList() {
-  const { shoppingList } = useContext(ShoppingContext);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    async function getData() {
+      const res = await fetch(
+        "https://fetch-me.vercel.app/api/shopping/categories"
+      );
+      const data = await res.json();
+      setCategories(data.data);
+    }
+    getData();
+  }, []);
 
   return (
-    <List className="shopping-list">
-      {shoppingList.map((item) => (
-        <ShoppingItem key={item._id} item={item} />
+    <CategoryList>
+      {categories.map((category) => (
+        <CategoryItem key={category._id} category={category} />
       ))}
-    </List>
+    </CategoryList>
   );
 }
 
-const List = styled.ul`
+const CategoryList = styled.ul`
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: 5px;
+  align-items: center;
+  gap: 10px;
   list-style: none;
   padding: 0;
 `;
