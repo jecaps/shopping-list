@@ -9,10 +9,17 @@ export default function SuggestionList() {
 
   return (
     <List className="suggestions-list">
-      {searchItem &&
-        suggestions.map((suggestion) => (
-          <SuggestedItem key={suggestion._id} item={suggestion} />
-        ))}
+      {searchItem ? (
+        suggestions.length === 0 ? (
+          <p>Item "{searchItem}" Not Found</p>
+        ) : (
+          suggestions.map((suggestion) => (
+            <SuggestedItem key={suggestion._id} item={suggestion} />
+          ))
+        )
+      ) : (
+        ""
+      )}
     </List>
   );
 }
