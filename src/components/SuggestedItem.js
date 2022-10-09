@@ -4,8 +4,13 @@ import { ShoppingContext } from "../context/ShoppingContext";
 import styled from "styled-components";
 
 export default function SuggestedItem({ item, id }) {
-  const { shoppingList, setShoppingList, setSearchItem, language } =
-    useContext(ShoppingContext);
+  const {
+    suggestions,
+    shoppingList,
+    setShoppingList,
+    setSearchItem,
+    language,
+  } = useContext(ShoppingContext);
 
   function addToList() {
     setShoppingList([...shoppingList, item]);
@@ -20,6 +25,14 @@ export default function SuggestedItem({ item, id }) {
           {item["name"][language]}
         </ListItem>
       )}
+      {suggestions.length === 1 &&
+        shoppingList.some((shoppingItem) => shoppingItem._id === id) && (
+          <p>
+            {language === "en"
+              ? "Item already exists"
+              : "Produkt bereits im Warenkorb"}
+          </p>
+        )}
     </>
   );
 }
