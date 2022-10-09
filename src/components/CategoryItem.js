@@ -6,7 +6,7 @@ import ShoppingItem from "./ShoppingItem";
 export default function CategoryItem({ category }) {
   const [showShoppingList, setShowShoppingList] = useState(true);
 
-  const { shoppingList } = useContext(ShoppingContext);
+  const { shoppingList, language } = useContext(ShoppingContext);
 
   const toggleShoppingList = () => {
     setShowShoppingList(!showShoppingList);
@@ -15,7 +15,7 @@ export default function CategoryItem({ category }) {
   return (
     <StyledCategoryItem>
       <ListToggler>
-        <h3>{category.name.en}</h3>
+        <h3>{category["name"][language]}</h3>
         <button type="button" onClick={toggleShoppingList}>
           {showShoppingList ? "▴" : "▾"}
         </button>

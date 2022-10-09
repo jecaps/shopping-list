@@ -5,12 +5,12 @@ import FuzzySearch from "fuzzy-search";
 import styled from "styled-components";
 
 export default function Input() {
-  const { items, searchItem, setSearchItem, setSuggestions } =
+  const { items, searchItem, setSearchItem, setSuggestions, language } =
     useContext(ShoppingContext);
 
   const showItemSuggestions = (e) => {
     setSearchItem(e.target.value);
-    const searcher = new FuzzySearch(items, ["name.en", "id"], {
+    const searcher = new FuzzySearch(items, [`name.${language}`, "id"], {
       caseSensitive: false,
     });
     setSuggestions(
@@ -23,7 +23,11 @@ export default function Input() {
 
   return (
     <Form>
-      <label htmlFor="input">What do you wanna buy?</label>
+      <label htmlFor="input">
+        {language === "en"
+          ? "What do you wanna buy?"
+          : "Was möchtest Du kaufen?"}
+      </label>
       <input
         id="input"
         type="text"

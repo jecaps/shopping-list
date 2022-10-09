@@ -6,6 +6,7 @@ import "./App.css";
 import ShoppingList from "./pages/ShoppingList";
 import SuggestionList from "./pages/SuggestionList";
 import Input from "./components/Input";
+import LanguageBtn from "./components/LanguageBtn";
 
 function App() {
   const [items, setItems] = useState([]);
@@ -14,10 +15,17 @@ function App() {
   );
   const [searchItem, setSearchItem] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const [language, setLanguage] = useState(
+    loadFromLocal("saved language") ?? "en"
+  );
 
   useEffect(() => {
     saveToLocal("saved shopping list", shoppingList);
   }, [shoppingList]);
+
+  useEffect(() => {
+    saveToLocal("saved language", language);
+  }, [language]);
 
   useEffect(() => {
     async function getData() {
@@ -42,8 +50,11 @@ function App() {
           setSearchItem,
           suggestions,
           setSuggestions,
+          language,
+          setLanguage,
         }}
       >
+        <LanguageBtn />
         <ShoppingList />
         <Input />
         <SuggestionList />

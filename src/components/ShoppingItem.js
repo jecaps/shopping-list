@@ -4,19 +4,21 @@ import { ShoppingContext } from "../context/ShoppingContext";
 import styled from "styled-components";
 
 export default function ShoppingItem({ item }) {
-  const { shoppingList, setShoppingList } = useContext(ShoppingContext);
+  const { shoppingList, setShoppingList, language } =
+    useContext(ShoppingContext);
 
   function removeFromList() {
     setShoppingList(
       shoppingList.filter(
-        (shoppingItem) => shoppingItem.name.en !== item.name.en
+        (shoppingItem) =>
+          shoppingItem["name"][language] !== item["name"][language]
       )
     );
   }
 
   return (
     <ListItem className="shopping-item" onClick={removeFromList}>
-      {item.name.en}
+      {item["name"][language]}
     </ListItem>
   );
 }
@@ -24,5 +26,5 @@ export default function ShoppingItem({ item }) {
 const ListItem = styled.li`
   border: 1px solid black;
   border-radius: 4px;
-  width: 100px;
+  padding: 2px 10px;
 `;

@@ -4,7 +4,7 @@ import { ShoppingContext } from "../context/ShoppingContext";
 import styled from "styled-components";
 
 export default function SuggestedItem({ item, id }) {
-  const { shoppingList, setShoppingList, setSearchItem } =
+  const { shoppingList, setShoppingList, setSearchItem, language } =
     useContext(ShoppingContext);
 
   function addToList() {
@@ -17,7 +17,7 @@ export default function SuggestedItem({ item, id }) {
     <>
       {!shoppingList.some((shoppingItem) => shoppingItem._id === id) && (
         <ListItem className="suggestion" onClick={addToList}>
-          {item.name.en}
+          {item["name"][language]}
         </ListItem>
       )}
     </>
