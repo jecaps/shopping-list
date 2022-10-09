@@ -32,7 +32,7 @@ export default function Input() {
         id="input"
         type="text"
         onChange={showItemSuggestions}
-        placeholder="Search Item"
+        placeholder={language === "en" ? "Search Item" : "Product suchen"}
       />
     </Form>
   );
