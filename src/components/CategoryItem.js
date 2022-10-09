@@ -4,7 +4,7 @@ import { ShoppingContext } from "../context/ShoppingContext";
 import ShoppingItem from "./ShoppingItem";
 
 export default function CategoryItem({ category }) {
-  const [showShoppingList, setShowShoppingList] = useState(true);
+  const [showShoppingList, setShowShoppingList] = useState(false);
 
   const { shoppingList } = useContext(ShoppingContext);
 
