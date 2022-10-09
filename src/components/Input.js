@@ -13,7 +13,12 @@ export default function Input() {
     const searcher = new FuzzySearch(items, ["name.en", "id"], {
       caseSensitive: false,
     });
-    setSuggestions(searcher.search(searchItem));
+    setSuggestions(
+      searcher
+        .search(searchItem)
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 10)
+    );
   };
 
   useEffect(() => {
