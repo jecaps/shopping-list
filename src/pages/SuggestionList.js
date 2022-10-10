@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ShoppingContext } from "../context/ShoppingContext";
 import SuggestedItem from "../components/SuggestedItem";
-import RecentlyUsedList from "./RecentlyUsedList";
+import RecentItems from "./RecentItems";
 
 import styled from "styled-components";
 
@@ -14,7 +14,7 @@ export default function SuggestionList() {
   return (
     <>
       {searchItem && suggestions.length === 0 && recentlyUsed.length > 0 && (
-        <RecentlyUsedList language={language} searchItem={searchItem} />
+        <RecentItems language={language} searchItem={searchItem} />
       )}
       <List className="suggestions-list">
         {searchItem &&

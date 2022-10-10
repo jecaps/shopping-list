@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function RecentlyUsedList({ children, language, searchItem }) {
+export default function RecentItems({ children, language, searchItem }) {
   return (
     <>
       <Text>
