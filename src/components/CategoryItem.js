@@ -38,6 +38,7 @@ const StyledCategoryItem = styled.li`
   h3 {
     margin: 0;
     padding: 5px;
+    color: #ff8e72;
   }
 `;
 
@@ -52,6 +53,8 @@ const ListToggler = styled.div`
     all: unset;
     position: absolute;
     right: 0;
+    color: #ff6b35;
+    font-size: 1.25rem;
   }
 `;
 

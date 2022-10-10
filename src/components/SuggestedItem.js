@@ -38,7 +38,9 @@ export default function SuggestedItem({ item, id }) {
 }
 
 const ListItem = styled.li`
-  border: 1px solid black;
+  background-color: #f29559;
+  color: #ffeedb;
+  border: 1px solid #f29559;
   border-radius: 4px;
-  padding: 2px 10px;
+  padding: 5px 10px;
 `;
