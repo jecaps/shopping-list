@@ -13,22 +13,26 @@ export default function CategoryItem({ category }) {
   };
 
   return (
-    <StyledCategoryItem>
-      <ListToggler>
-        <h3>{category["name"][language]}</h3>
-        <button type="button" onClick={toggleShoppingList}>
-          {showShoppingList ? "▴" : "▾"}
-        </button>
-      </ListToggler>
+    <>
+      {shoppingList.some((item) => item.category._ref === category._id) && (
+        <StyledCategoryItem>
+          <ListToggler>
+            <h3>{category["name"][language]}</h3>
+            <button type="button" onClick={toggleShoppingList}>
+              {showShoppingList ? "▴" : "▾"}
+            </button>
+          </ListToggler>
 
-      <List variant={showShoppingList}>
-        {shoppingList
-          .filter((item) => item.category._ref === category._id)
-          .map((item) => (
-            <ShoppingItem key={item._id} item={item} />
-          ))}
-      </List>
-    </StyledCategoryItem>
+          <List variant={showShoppingList}>
+            {shoppingList
+              .filter((item) => item.category._ref === category._id)
+              .map((item) => (
+                <ShoppingItem key={item._id} item={item} />
+              ))}
+          </List>
+        </StyledCategoryItem>
+      )}
+    </>
   );
 }
 
