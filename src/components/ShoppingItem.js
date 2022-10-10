@@ -4,10 +4,26 @@ import { ShoppingContext } from "../context/ShoppingContext";
 import styled from "styled-components";
 
 export default function ShoppingItem({ item }) {
-  const { shoppingList, setShoppingList, language } =
-    useContext(ShoppingContext);
+  const {
+    shoppingList,
+    setShoppingList,
+    language,
+    recentlyUsed,
+    setRecentlyUsed,
+  } = useContext(ShoppingContext);
 
   function removeFromList() {
+    setRecentlyUsed(
+      [
+        ...new Set([
+          ...recentlyUsed,
+          shoppingList.filter(
+            (shoppingItem) =>
+              shoppingItem["name"][language] === item["name"][language]
+          ),
+        ]),
+      ].flat()
+    );
     setShoppingList(
       shoppingList.filter(
         (shoppingItem) =>

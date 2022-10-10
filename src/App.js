@@ -19,6 +19,9 @@ function App() {
   const [language, setLanguage] = useState(
     loadFromLocal("saved language") ?? "en"
   );
+  const [recentlyUsed, setRecentlyUsed] = useState(
+    loadFromLocal("saved recently used items") ?? []
+  );
 
   useEffect(() => {
     saveToLocal("saved shopping list", shoppingList);
@@ -27,6 +30,10 @@ function App() {
   useEffect(() => {
     saveToLocal("saved language", language);
   }, [language]);
+
+  useEffect(() => {
+    saveToLocal("saved recently used items", recentlyUsed);
+  }, [recentlyUsed]);
 
   useEffect(() => {
     async function getData() {
@@ -53,6 +60,8 @@ function App() {
           setSuggestions,
           language,
           setLanguage,
+          recentlyUsed,
+          setRecentlyUsed,
         }}
       >
         <Header>

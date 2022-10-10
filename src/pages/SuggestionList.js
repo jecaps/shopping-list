@@ -1,34 +1,36 @@
 import { useContext } from "react";
 import { ShoppingContext } from "../context/ShoppingContext";
 import SuggestedItem from "../components/SuggestedItem";
+import RecentlyUsedList from "./RecentlyUsedList";
 
 import styled from "styled-components";
 
 export default function SuggestionList() {
-  const { searchItem, suggestions, language } = useContext(ShoppingContext);
+  const { searchItem, suggestions, recentlyUsed } = useContext(ShoppingContext);
 
   return (
-    <List className="suggestions-list">
-      {searchItem ? (
-        suggestions.length === 0 ? (
-          <p>
-            {language === "en"
-              ? `"${searchItem}" Not Found`
-              : `"${searchItem}" nicht gefunden`}
-          </p>
-        ) : (
+    <>
+      {searchItem && suggestions.length === 0 && <RecentlyUsedList />}
+      <List className="suggestions-list">
+        {searchItem &&
+          suggestions.length === 0 &&
+          recentlyUsed.map((suggestion) => (
+            <SuggestedItem
+              key={suggestion._id}
+              item={suggestion}
+              id={suggestion._id}
+            />
+          ))}
+        {searchItem &&
           suggestions.map((suggestion) => (
             <SuggestedItem
               key={suggestion._id}
               item={suggestion}
               id={suggestion._id}
             />
-          ))
-        )
-      ) : (
-        ""
-      )}
-    </List>
+          ))}
+      </List>
+    </>
   );
 }
 
