@@ -19,7 +19,8 @@ export default function ShoppingItem({ item }) {
           ...recentlyUsed,
           shoppingList.filter(
             (shoppingItem) =>
-              shoppingItem["name"][language] === item["name"][language]
+              shoppingItem["name"][language] === item["name"][language] &&
+              !recentlyUsed.some((i) => i._id === item._id)
           ),
         ]),
       ].flat()
@@ -40,7 +41,7 @@ export default function ShoppingItem({ item }) {
 }
 
 const ListItem = styled.li`
-  background-color: #f7c59f;
+  background-color: #fcddbc;
   color: #d64933;
   border: 1px solid #ff6b35;
   border-radius: 4px;

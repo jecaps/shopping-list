@@ -11,11 +11,11 @@ import LanguageBtn from "./components/LanguageBtn";
 
 function App() {
   const [items, setItems] = useState([]);
+  const [searchItem, setSearchItem] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
   const [shoppingList, setShoppingList] = useState(
     loadFromLocal("saved shopping list") ?? []
   );
-  const [searchItem, setSearchItem] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
   const [language, setLanguage] = useState(
     loadFromLocal("saved language") ?? "en"
   );

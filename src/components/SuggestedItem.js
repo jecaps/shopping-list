@@ -16,6 +16,7 @@ export default function SuggestedItem({ item, id }) {
     setShoppingList([...shoppingList, item]);
     setSearchItem("");
     document.getElementById("input").value = "";
+    document.getElementById("input").focus();
   }
 
   return (

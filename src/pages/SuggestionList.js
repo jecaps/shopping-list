@@ -6,15 +6,20 @@ import RecentlyUsedList from "./RecentlyUsedList";
 import styled from "styled-components";
 
 export default function SuggestionList() {
-  const { searchItem, suggestions, recentlyUsed } = useContext(ShoppingContext);
+  const { searchItem, suggestions, recentlyUsed, language } =
+    useContext(ShoppingContext);
+
+  const sortedRecentlyUsed = [...new Set(recentlyUsed)];
 
   return (
     <>
-      {searchItem && suggestions.length === 0 && <RecentlyUsedList />}
+      {searchItem && suggestions.length === 0 && recentlyUsed.length > 0 && (
+        <RecentlyUsedList language={language} searchItem={searchItem} />
+      )}
       <List className="suggestions-list">
         {searchItem &&
           suggestions.length === 0 &&
-          recentlyUsed.map((suggestion) => (
+          sortedRecentlyUsed.map((suggestion) => (
             <SuggestedItem
               key={suggestion._id}
               item={suggestion}

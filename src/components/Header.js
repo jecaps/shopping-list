@@ -16,4 +16,5 @@ const StyledHeader = styled.header`
   align-items: center;
   background-color: #ff6b35;
   color: #ffffff;
+  width: 100%;
 `;
