@@ -3,6 +3,7 @@ import { ShoppingContext } from "./context/ShoppingContext";
 import { saveToLocal, loadFromLocal } from "./lib/localStorage";
 import "./App.css";
 
+import Header from "./components/Header";
 import ShoppingList from "./pages/ShoppingList";
 import SuggestionList from "./pages/SuggestionList";
 import Input from "./components/Input";
@@ -54,7 +55,9 @@ function App() {
           setLanguage,
         }}
       >
-        <LanguageBtn />
+        <Header>
+          <LanguageBtn />
+        </Header>
         <ShoppingList />
         <Input />
         <SuggestionList />

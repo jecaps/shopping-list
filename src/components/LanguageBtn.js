@@ -10,21 +10,27 @@ export default function LanguageBtn() {
   };
 
   return (
-    <>
+    <LanguageContainer>
       <Button onClick={() => chooseLanguage("en")}>EN</Button>
       <span>|</span>
       <Button onClick={() => chooseLanguage("de")}>DE</Button>
-    </>
+    </LanguageContainer>
   );
 }
 
+const LanguageContainer = styled.div`
+  position: absolute;
+  right: 5px;
+  top: 0;
+  font-size: 0.75rem;
+`;
+
 const Button = styled.button`
-  text-align: end;
   all: unset;
-  color: blue;
-  padding: 10px;
+  color: #f7c59f;
+  padding: 5px;
 
   &:hover {
-    color: red;
+    color: #d64933;
   }
 `;
