@@ -31,7 +31,7 @@ export default function SuggestedItem({ item, id }) {
           <p>
             {language === "en"
               ? "Item already exists"
-              : "Produkt bereits im Warenkorb"}
+              : "Artikel bereits in der Liste"}
           </p>
         )}
     </>
